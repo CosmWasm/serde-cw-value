@@ -114,7 +114,7 @@ impl Ord for Value {
 }
 
 #[cfg(feature = "json_schema")]
-impl JsonSchema for Value {
+impl schemars::JsonSchema for Value {
     fn schema_name() -> String {
         "JSON object".to_string()
     }
