@@ -113,6 +113,17 @@ impl Ord for Value {
     }
 }
 
+#[cfg(feature = "json_schema")]
+impl schemars::JsonSchema for Value {
+    fn schema_name() -> String {
+        "JSON".to_string()
+    }
+
+    fn json_schema(gen: &mut schemars::gen::SchemaGenerator) -> schemars::schema::Schema {
+        schemars::schema::Schema::from(true)
+    }
+}
+
 impl Value {
     fn discriminant(&self) -> usize {
         match *self {

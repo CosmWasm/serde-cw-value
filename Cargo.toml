@@ -10,8 +10,12 @@ readme = "README.md"
 keywords = ["serde", "wasm"]
 license = "MIT"
 
+[features]
+json_schema = []
+
 [dependencies]
 serde = "^1.0.0"
+schemars = { version = "0.8.11", default-features = false, cfg = "feature = \"json_schema\""}
 
 [dev-dependencies]
 serde_derive = "^1.0.0"
