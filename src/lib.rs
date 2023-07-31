@@ -113,13 +113,13 @@ impl Ord for Value {
     }
 }
 
-#[cfg(feature = "json_schema")]
+#[cfg(feature = "schema")]
 impl schemars::JsonSchema for Value {
     fn schema_name() -> String {
         "JSON".to_string()
     }
 
-    fn json_schema(gen: &mut schemars::gen::SchemaGenerator) -> schemars::schema::Schema {
+    fn json_schema(_gen: &mut schemars::gen::SchemaGenerator) -> schemars::schema::Schema {
         schemars::schema::Schema::from(true)
     }
 }
