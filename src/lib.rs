@@ -1,7 +1,24 @@
+#![cfg_attr(not(feature = "std"), no_std)]
 use serde::Deserialize;
-use std::cmp::Ordering;
-use std::collections::BTreeMap;
-use std::hash::{Hash, Hasher};
+
+#[cfg(feature = "std")]
+use std::{
+    cmp::Ordering,
+    collections::BTreeMap,
+    hash::{Hash, Hasher},
+    vec::Vec,
+};
+
+#[cfg(not(feature = "std"))]
+extern crate alloc;
+
+#[cfg(not(feature = "std"))]
+use alloc::{collections::BTreeMap, vec::Vec};
+#[cfg(not(feature = "std"))]
+use core::{
+    cmp::Ordering,
+    hash::{Hash, Hasher},
+};
 
 pub use de::*;
 pub use ser::*;
