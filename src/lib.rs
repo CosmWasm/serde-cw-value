@@ -1,31 +1,16 @@
 #![cfg_attr(not(feature = "std"), no_std)]
-use serde::Deserialize;
-
-#[cfg(feature = "std")]
-use std::{
-    boxed::Box,
-    cmp::Ordering,
-    collections::BTreeMap,
-    hash::{Hash, Hasher},
-    string::String,
-    vec::Vec,
-};
 
 #[cfg(not(feature = "std"))]
 extern crate alloc;
 
-#[cfg(not(feature = "std"))]
-use alloc::{boxed::Box, collections::BTreeMap, string::String, vec::Vec};
-#[cfg(not(feature = "std"))]
-use core::{
-    cmp::Ordering,
-    hash::{Hash, Hasher},
-};
+use crate::no_std::*;
+use serde::Deserialize;
 
 pub use de::*;
 pub use ser::*;
 
 mod de;
+mod no_std;
 mod ser;
 
 #[derive(Clone, Debug)]

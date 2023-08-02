@@ -1,9 +1,6 @@
-use serde::ser;
-use std::collections::BTreeMap;
-use std::error::Error;
-use std::fmt;
-
+use crate::no_std::*;
 use crate::Value;
+use serde::ser;
 
 #[derive(Debug)]
 pub enum SerializerError {
