@@ -1,5 +1,6 @@
 #[cfg(feature = "std")]
 pub use std::{
+    borrow::ToOwned,
     boxed::Box,
     cmp::Ordering,
     collections::BTreeMap,
@@ -7,7 +8,6 @@ pub use std::{
     fmt,
     hash::{Hash, Hasher},
     marker::PhantomData,
-    string::String,
     string::{String, ToString},
     vec,
     vec::Vec,
@@ -15,6 +15,7 @@ pub use std::{
 
 #[cfg(not(feature = "std"))]
 pub use alloc::{
+    borrow::ToOwned,
     boxed::Box,
     collections::BTreeMap,
     string::{String, ToString},
