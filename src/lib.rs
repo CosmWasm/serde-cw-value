@@ -7,6 +7,7 @@ use std::{
     cmp::Ordering,
     collections::BTreeMap,
     hash::{Hash, Hasher},
+    string::String,
     vec::Vec,
 };
 
@@ -14,7 +15,7 @@ use std::{
 extern crate alloc;
 
 #[cfg(not(feature = "std"))]
-use alloc::{boxed::Box, collections::BTreeMap, vec::Vec};
+use alloc::{boxed::Box, collections::BTreeMap, string::String, vec::Vec};
 #[cfg(not(feature = "std"))]
 use core::{
     cmp::Ordering,
