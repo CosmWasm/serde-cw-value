@@ -10,8 +10,20 @@ readme = "README.md"
 keywords = ["serde", "wasm"]
 license = "MIT"
 
+[features]
+default = ["std"]
+
+std = []
+schema = ["std", "dep:schemars"]
+unstable = ["serde/unstable"]
+
 [dependencies]
-serde = "^1.0.0"
+serde = { version = "^1.0.103", default-features = false, features = [
+    "derive",
+    "alloc",
+] }
+schemars = { version = "^0.8.3", optional = true }
+
 
 [dev-dependencies]
 serde_derive = "^1.0.0"

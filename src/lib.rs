@@ -1,7 +1,19 @@
+#![cfg_attr(not(feature = "std"), no_std)]
+#![cfg_attr(feature = "unstable", feature(error_in_core))]
+
+#[cfg(test)]
+extern crate std;
+
+extern crate alloc;
+
+use alloc::boxed::Box;
+use alloc::collections::BTreeMap;
+use alloc::string::String;
+use alloc::vec::Vec;
+use core::cmp::Ordering;
+use core::hash::Hash;
+use core::hash::Hasher;
 use serde::Deserialize;
-use std::cmp::Ordering;
-use std::collections::BTreeMap;
-use std::hash::{Hash, Hasher};
 
 pub use de::*;
 pub use ser::*;
@@ -110,6 +122,17 @@ impl Ord for Value {
             (&Value::Bytes(ref v0), &Value::Bytes(ref v1)) => v0.cmp(v1),
             (v0, v1) => v0.discriminant().cmp(&v1.discriminant()),
         }
+    }
+}
+
+#[cfg(feature = "schema")]
+impl schemars::JsonSchema for Value {
+    fn schema_name() -> String {
+        "JSON".to_string()
+    }
+
+    fn json_schema(_gen: &mut schemars::gen::SchemaGenerator) -> schemars::schema::Schema {
+        schemars::schema::Schema::from(true)
     }
 }
 

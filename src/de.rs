@@ -1,10 +1,20 @@
-use serde::{de, forward_to_deserialize_any};
-use std::collections::BTreeMap;
+use alloc::collections::BTreeMap;
+use alloc::fmt;
+use alloc::vec::Vec;
+
+use alloc::boxed::Box;
+use alloc::string::String;
+#[cfg(not(feature = "std"))]
+use alloc::vec;
+use core::marker::PhantomData;
+
+#[cfg(feature = "unstable")]
+use core::error::Error;
+#[cfg(not(feature = "unstable"))]
 use std::error::Error;
-use std::fmt;
-use std::marker::PhantomData;
 
 use crate::Value;
+use serde::{de, forward_to_deserialize_any};
 
 #[derive(Debug)]
 pub enum Unexpected {

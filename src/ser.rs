@@ -1,9 +1,19 @@
-use serde::ser;
-use std::collections::BTreeMap;
-use std::error::Error;
-use std::fmt;
+use alloc::boxed::Box;
+use alloc::collections::BTreeMap;
+use alloc::fmt;
+use alloc::string::String;
+use alloc::vec;
+use alloc::vec::Vec;
 
 use crate::Value;
+#[cfg(feature = "unstable")]
+use core::error::Error;
+#[cfg(not(feature = "std"))]
+use core::marker::PhantomData;
+use serde::ser;
+
+#[cfg(not(feature = "unstable"))]
+use std::error::Error;
 
 #[derive(Debug)]
 pub enum SerializerError {
