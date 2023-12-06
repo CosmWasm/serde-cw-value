@@ -22,7 +22,7 @@ serde = { version = "^1.0", default-features = false, features = [
     "derive",
     "alloc",
 ] }
-schemars = { version = "^0.8.3", optional = true }
+schemars = { version = "^0.8", optional = true }
 
 
 [dev-dependencies]
