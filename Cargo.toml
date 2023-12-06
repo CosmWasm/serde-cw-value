@@ -18,7 +18,7 @@ schema = ["std", "dep:schemars"]
 unstable = ["serde/unstable"]
 
 [dependencies]
-serde = { version = "^1.0.103", default-features = false, features = [
+serde = { version = "^1.0", default-features = false, features = [
     "derive",
     "alloc",
 ] }
